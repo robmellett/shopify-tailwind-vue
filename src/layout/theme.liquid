@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ shop.locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  <title>{{ shop.name }}</title>
+
+  <meta name="description" content="">
+
+  {% include 'style-tags', layout: 'theme' %}
+  {% include 'script-tags', layout: 'theme' %}
+
+  {{ content_for_header }}
+</head>
+
+<body>
+  <div id="app">
+
+    **** This is a vue component ****
+    <example-component
+        shopName="{{ shop.name }}"></example-component>
+    *******
+
+    {{ content_for_layout }}
+  </div>
+</body>
+</html>
