@@ -9,7 +9,7 @@ This project is based off [shopify/skeleton-theme](https://github.com/shopify/sk
 
 get started
 ```
-$ yarn create slate-theme my-new-theme robmellett/slate-vue-starter
+$ yarn create slate-theme my-new-theme robmellett/shopify-tailwind-vue
 ```
 
 
