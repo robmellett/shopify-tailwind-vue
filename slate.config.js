@@ -25,6 +25,15 @@ const part = {
                 test: /.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
+            },
+            {
+                test: /.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+                loader: 'url-loader',
+                //include: path.join(__dirname, ''),
+                options: {
+                    publicPath: './',
+                    limit: 10000,
+                },
             }
         ]
     },
@@ -53,7 +62,10 @@ const postcssLoader = {
     loader: 'postcss-loader',
     options: {
         ident: 'postcss',
-        sourceMap: !isDevelopment
+        sourceMap: !isDevelopment,
+        plugins: [
+            require('autoprefixer'),
+            require('tailwindcss')('./tailwind.config.js')],
     }
 };
 
