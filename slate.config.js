@@ -64,8 +64,9 @@ const postcssLoader = {
         ident: 'postcss',
         sourceMap: !isDevelopment,
         plugins: [
+            require('tailwindcss')('./tailwind.config.js'),
             require('autoprefixer'),
-            require('tailwindcss')('./tailwind.config.js')],
+        ],
     }
 };
 
