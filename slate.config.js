@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {VueLoaderPlugin} = require('vue-loader');
+const { VueLoaderPlugin } = require('vue-loader');
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 const alias = {
@@ -55,7 +55,7 @@ const cssLoader = {
     // styles using a <link> tag instead of <style> tag. This causes
     // a FOUC content, which can cause issues with JS that is reading
     // the DOM for styles (width, height, visibility) on page load.
-    options: {sourceMap: !isDevelopment}
+    options: { sourceMap: !isDevelopment }
 };
 
 const postcssLoader = {
@@ -64,7 +64,7 @@ const postcssLoader = {
         ident: 'postcss',
         sourceMap: !isDevelopment,
         plugins: [
-            require('tailwindcss')('./tailwind.config.js'),
+            require('tailwindcss'),
             require('autoprefixer'),
         ],
     }
