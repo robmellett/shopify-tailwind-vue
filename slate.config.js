@@ -85,5 +85,10 @@ module.exports = {
         part.module.rules.push(postCssRule);
 
         return part
-    }
+    },
+    'webpack.postcss.plugins': (config, defaultValue) => [
+      require('tailwindcss'),
+      require('autoprefixer'),
+      ...defaultValue
+    ]
 };
