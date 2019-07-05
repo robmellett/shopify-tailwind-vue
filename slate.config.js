@@ -73,8 +73,9 @@ const postcssLoader = {
 module.exports = {
     'webpack.extend': config => {
         const postCssRule = {
-            test: /\.pcss$/,
-            exclude: config.get('webpack.commonExcludes')
+            test: /\.css$/,
+            exclude: config.get('webpack.commonExcludes'),
+            use: [ 'style-loader', 'postcss-loader' ]
         };
 
         postCssRule.use = [
@@ -87,8 +88,11 @@ module.exports = {
         return part
     },
     'webpack.postcss.plugins': (config, defaultValue) => [
-      require('tailwindcss'),
-      require('autoprefixer'),
-      ...defaultValue
+        require('tailwindcss'),
+        require('autoprefixer'),
+        require('cssnano')({
+          preset: 'default',
+        }),
+        ...defaultValue
     ]
 };
