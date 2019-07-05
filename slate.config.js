@@ -36,38 +36,21 @@ const part = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.pcss$/,
+        exclude: [ /node_modules/, /assets\/static/ ],
         use: [
-          MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              minimize: !isDevelopment,
-              importLoaders: 1,
-              modules: true,
-              sourceMap: isDevelopment
-            }
+              // you can specify a publicPath here
+              // by default it uses publicPath in webpackOptions.output
+              // publicPath: '../',
+              hmr: isDevelopment,
+            },
           },
-          {
-            loader: "postcss-loader",
-            options: {
-              ident: "postcss",
-              plugins: () => [
-                require("postcss-import"),
-                require("postcss-cssnext")({
-                  features: {
-                    customProperties: {
-                      warnings: false
-                    }
-                  }
-                }),
-                require('tailwindcss'),
-                require("autoprefixer")(),
-                require("cssnano")()
-              ],
-              sourceMap: true
-            }
-          }
+          'style-loader',
+          'css-loader',
+          'vue-style-loader',
         ]
       }
     ]
@@ -84,8 +67,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
     './src/**/*.html',
     './src/**/*.liquid',
     './src/**/*.vue',
-    './src/**/*.jsx',
-    // etc.
+    './src/**/*.jsx'
   ],
 
   // Include any special characters you're using in this regular expression
@@ -97,12 +79,12 @@ module.exports = {
     return part;
   },
   'webpack.postcss.plugins': (config, defaultValue) => [
-      require('tailwindcss'),
-      require('autoprefixer'),
-      require('cssnano')({
-        preset: 'default',
-      }),
-      ...defaultValue,
-      ...process.env.NODE_ENV === 'production' ? [purgecss] : []
+    require('tailwindcss'),
+    require('autoprefixer'),
+    require('cssnano')({
+      preset: 'default',
+    }),
+    ...defaultValue,
+    ...process.env.NODE_ENV === 'production' ? [purgecss] : []
   ]
 };
