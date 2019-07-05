@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span>shop name is: {{this.shopname}}, count: {{this.count}}
+        <span>shop name is: {{ this.shopname }}, count: {{ this.count }}
 	        <button @click="increment" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded">increment</button></span>
         <p>
             The count will stay when you will move to different pages, thanks to <a href="https://github.com/championswimmer/vuex-persist">vuex-persist</a>.
@@ -19,11 +19,18 @@
       shopname: String,
     },
     name: 'ThemeComponent',
+
     computed: mapGetters(['count']),
+
     methods: mapMutations(['increment']),
   };
 </script>
 
+<style>
+  div {
+    @apply .bg-red-100; /** Test to make sure styles work **/
+  }
+</style>
 
 
 
