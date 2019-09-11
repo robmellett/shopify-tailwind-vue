@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "author": "Shopify Inc., Rob Mellett",
-  "description": "A barebones, Slate compatible, starting point for developing Shopify themes with vue and tailwindcss.",
+  "description": "A barebones, Slate compatible, starting point for developing Shopify themes with vue.",
   "keywords": [
     "shopify",
     "theme",
@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/robmellett/slate-vue-starter.git"
+    "url": "https://github.com/robmellett/shopify-tailwind-vue.git"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.2.0",
