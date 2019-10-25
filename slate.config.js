@@ -1,37 +1,37 @@
 /* eslint-disable no-undef */
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { VueLoaderPlugin } = require("vue-loader");
-const isDevelopment = process.env.NODE_ENV === "development";
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { VueLoaderPlugin } = require('vue-loader');
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 const alias = {
-  jQuery: path.resolve("./node_modules/jquery"),
-  $: path.resolve("./node_modules/jquery"),
-  vue: "vue/dist/vue.js"
+  jQuery: path.resolve('./node_modules/jquery'),
+  $: path.resolve('./node_modules/jquery'),
+  vue: 'vue/dist/vue.js'
 };
 
 const part = {
   resolve: {
     alias,
-    extensions: [".js", ".css", ".json", ".vue"]
+    extensions: ['.js', '.css', '.json', '.vue']
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
-        loader: "vue-loader"
+        loader: 'vue-loader'
       },
       {
         test: /.js$/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         exclude: /node_modules/
       },
       {
         test: /.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: "url-loader",
+        loader: 'url-loader',
         //include: path.join(__dirname, ''),
         options: {
-          publicPath: "./",
+          publicPath: './',
           limit: 10000
         }
       },
@@ -46,6 +46,7 @@ const part = {
               // by default it uses publicPath in webpackOptions.output
               // publicPath: '../',
               hmr: isDevelopment,
+              sourceMap: isDevelopment,
             },
           },
           'style-loader',
@@ -75,7 +76,7 @@ const purgecss = require('@fullhuman/postcss-purgecss')({
 });
 
 module.exports = {
-  "webpack.extend": config => {
+  'webpack.extend': config => {
     return part;
   },
   'webpack.postcss.plugins': (config, defaultValue) => [
