@@ -1,3 +1,11 @@
+# Note: Shopify has declared slate as End of Support
+https://github.com/Shopify/slate
+
+
+If you are still interested in using Vue with Shopify, checkout my Nuxt.js sample that wires up all the hard bits for you.
+https://github.com/robmellett/shopify-nuxt-demo
+
+
 slate-tailwind-vue
 =====================
 
